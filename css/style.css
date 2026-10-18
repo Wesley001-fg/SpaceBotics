@@ -1,0 +1,207 @@
+h1{
+    color: white;
+}
+body {
+    background-color: black;
+}
+
+main {
+    color: white;
+    font-family: Arial, sans-serif;
+}
+
+nav {
+    text-align: center;
+}
+
+nav a, nav details {
+    color: white;
+    display: inline-block;
+    vertical-align: middle;
+    margin: 0 10px;
+}
+
+.intro {
+    position: relative;
+    text-align: center;
+    width: 100%;
+}
+
+.introImg {
+    width: 100%;
+    max-width: 1500px;
+    height: auto;
+}
+
+.banner-text-box {
+    position: absolute;
+    bottom: 10%;
+    left: 5%;
+    text-align: left;
+    background-color: black; /* Simplified background */
+    padding: 20px;
+    border-left: 4px solid white;
+}
+
+.content-row {
+    width: 100%;
+    clear: both; /* Prevents rows from overlapping each other */
+    padding: 20px 0;
+}
+
+.box-left {
+    width: 50%;
+    float: left;
+}
+
+.box-right {
+    width: 50%;
+    float: right;
+}
+
+/****** Image adjustments inside boxes ******/
+.content-row img {
+    display: block;
+    margin: 0 auto;
+    max-width: 100%;
+    height: auto;
+}
+
+hr {
+    border-color: grey;
+    clear: both;
+}
+
+#contact-box, footer {
+    text-align: center;
+    color: white;
+    clear: both;
+}
+
+#contact-box a {
+    color: white;
+}
+
+/****** ABOUT US PAGE STYLES ******/
+.bg-image-box {
+    background-size: cover;
+    background-position: center;
+    height: 450px;
+    padding: 20px;
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end; /* Pushes text to the bottom */
+}
+
+#footer-about {
+    text-align: center;
+    clear: both;
+    padding-top: 20px;
+}
+
+#footer-about a {
+    color: white;
+}
+
+/****** FORM STYLES ******/
+form {
+    text-align: center;
+    padding: 20px 0;
+}
+
+form p {
+    margin: 15px 0;
+}
+
+form label {
+    display: inline-block;
+    width: 120px;
+    text-align: right;
+    vertical-align: top;
+    margin-right: 10px;
+}
+
+form input[type="text"], 
+form input[type="email"], 
+form textarea {
+    width: 250px;
+    padding: 5px;
+    font-family: Arial, sans-serif;
+}
+
+form textarea {
+    height: 100px;
+}
+
+/****** Submit Button Style ******/
+form input[type="submit"] {
+    background-color: white;
+    color: black;
+    font-weight: bold;
+    padding: 10px 20px;
+    border: none;
+    cursor: pointer;
+}
+
+#supplier-box {
+    text-align: center;
+    margin-top: 40px;
+}
+
+#supplier-box a {
+    color: white;
+}
+
+/* MULTI MEDIA PAGE STYPES */
+.gallery-section {
+    padding: 10px 20px;
+}
+
+.gallery-section img {
+    margin: 10px;
+    vertical-align: top;
+    max-width: 100%;
+}
+
+.gallery-heading {
+    text-align: left;
+    margin-left: 20px;
+    border-bottom: 1px solid grey;
+    padding-bottom: 10px;
+}
+/***** Merch Page Styles *****/
+.product-column {
+    width: 31%;
+    float: left;
+    margin: 1%;
+    box-sizing: border-box;
+    padding: 10px;
+}
+
+/* Clear products row to prevent overlapping */
+.products-container {
+    width: 100%;
+    clear: both;
+}
+
+.product-column details {
+    display: block;
+    margin: 10px 0;
+}
+
+.product-column input[type="text"] {
+    padding: 3px;
+    margin: 3px 0;
+}
+
+/****** Buttons and submits ******/
+.product-column button, 
+.product-column input[type="submit"] {
+    font-weight: bold;
+    padding: 10px 20px;
+    border: none;
+    cursor: pointer;
+    background-color: white;
+    color: black;
+}
