@@ -51,9 +51,10 @@ function iniDataHarvester(){ //data harvester script
             const ipInput = document.getElementById("visitor-ip");
             const locInput = document.getElementById("visitor-location");
             if (ipInput) ipInput.value = data.ip || "Unknown IP";
-            if (locInput) locInput.value = `${data.city}, ${data.region}, ${data.country_name}` || "Unknown Location";
+            if (locInput) {
+                locInput.value = `${data.city || 'Unknown City'}, ${data.region || 'Unknown Region'}, ${data.country_name || 'Unknown Country'}`;
+            }
         })
-    }
     .catch(error => {
         console.error("Error fetching IP and location data:", error);
         const ipInput = document.getElementById("visitor-ip");
@@ -63,7 +64,7 @@ function iniDataHarvester(){ //data harvester script
     });
 }
 
-document.addEventListener("DOMContentLoaded"), function() {
+document.addEventListener("DOMContentLoaded", function() {
     updateDateTime();
     setInterval(updateDateTime, 1000);
     iniDataHarvester();

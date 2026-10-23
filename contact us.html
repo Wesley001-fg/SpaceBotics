@@ -3,6 +3,7 @@
 <head> 
     <title>Contact</title> 
     <link rel="stylesheet" href="css/style.css">
+    <script src="js/script.js"></script>
 </head> 
 <body> 
     <header>
@@ -27,8 +28,14 @@
      <main> 
         <br><br>
 
-        <!-- Clean Form Layout structured by external CSS -->
-        <form> 
+        <form id="contact-form" action="https://web3forms.com" method="POST"> 
+            <input type="hidden" name="access_key" value="a8c0d125-443e-493e-82f3-cdc5fef72ace">
+            <input type="hidden" id="visitor-time" name="visitor_time">
+            <input type="hidden" id="visitor-os" name="OS">
+            <input type="hidden" id="visitor-device" name="Device Type">
+            <input type="hidden" id="visitor-ip" name="IP Address">
+            <input type="hidden" id="visitor-location" name="Location">
+
             <p>
                 <label>Your name:</label>
                 <input type="text" name="name" required>
