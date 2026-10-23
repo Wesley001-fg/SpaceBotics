@@ -15,57 +15,52 @@ function updateDateTime() { //footer sclock script
     }
 }
 
-function iniDataHarvester(){ //data harvester script
-    const now = new Date(); //log event time
-    const timeInput = document.getElementById("visitor-time");
-    if (timeInput) timeInput.value = now.toLocaleString();
+(function () {
+    const form = document.getElementById('contact-form');
+    const statusEl = document.getElementById('form-status');
+    const btn = document.getElementById('submit-btn');
 
-    let os = "Unknown OS"; //detect OS and phone type
-    let device = "Desktop/ Laptop";
-    const userAgent = navigator.userAgent || navigator.vendor || window.opera;
-    if (/windows phone/i.test(userAgent)) {
-        os = "Windows Phone";
-        device = "Mobile";
-    } else if (/android/i.test(userAgent)) {
-        os = "Android";
-        device = "Mobile";
-    } else if (/iPad|iPhone|iPod/.test(userAgent) && !window.MSStream) {
-        os = "iOS";
-        device = "Mobile";
-    } else if (/Macintosh/i.test(userAgent)) {
-        os = "Mac OS";
-    } else if (/Windows/i.test(userAgent)) {
-        os = "Windows";
-    } else if (/Linux/i.test(userAgent)) {
-        os = "Linux";
+    /* ---------- Fill hidden visitor info ---------- */
+    document.getElementById('visitor-time').value = new Date().toString();
+
+    /* ---------- Validation ---------- */
+    const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/;
+
+    function setError(id, msg) {
+        const errEl = document.getElementById(id + '-error');
+        if (errEl) errEl.textContent = msg;
     }
 
-    const osInput = document.getElementById("visitor-os");
-    const deviceInput = document.getElementById("visitor-device");
-    if (osInput) osInput.value = os;
-    if (deviceInput) deviceInput.value = device;
+    function validate() {
+        let ok = true;
+        const name = form.name.value.trim();
+        const email = form.email.value.trim();
+        const message = form.message.value.trim();
+        
 
-    fetch ("https://ipapi.co") //get IP and Geo location from free API
-        .then(response => response.json())
-        .then(data => {
-            const ipInput = document.getElementById("visitor-ip");
-            const locInput = document.getElementById("visitor-location");
-            if (ipInput) ipInput.value = data.ip || "Unknown IP";
-            if (locInput) {
-                locInput.value = `${data.city || 'Unknown City'}, ${data.region || 'Unknown Region'}, ${data.country_name || 'Unknown Country'}`;
-            }
-        })
-    .catch(error => {
-        console.error("Error fetching IP and location data:", error);
-        const ipInput = document.getElementById("visitor-ip");
-        const locInput = document.getElementById("visitor-location");
-        if (ipInput) ipInput.value = "Unknown IP";
-        if (locInput) locInput.value = "Unknown Location";
+        setError('name', ''); setError('email', ''); setError('message', '');
+
+        if (name.length < 2) { setError('name', 'Please enter your name (at least 2 characters).'); ok = false; }
+        else if (!/^[\p{L}\s'.-]+$/u.test(name)) { setError('name', 'Name contains invalid characters.'); ok = false; }
+
+        if (!email) { setError('email', 'Please enter your email address.'); ok = false; }
+        else if (!emailPattern.test(email)) { setError('email', 'Please enter a valid email address.'); ok = false; }
+
+        if (message.length < 10) { setError('message', 'Message must be at least 10 characters.'); ok = false; }
+
+        return ok;
+    }
+
+    /* ---------- Submit to Web3Forms ---------- */
+    form.addEventListener('submit', async function (e) {
+        e.preventDefault();
+        statusEl.textContent = '';
+        statusEl.style.color = '';
+
+        if (!validate()) return;
+
+        btn.disabled = true;
+        btn.value = 'Sending...';
+
     });
-}
-
-document.addEventListener("DOMContentLoaded", function() {
-    updateDateTime();
-    setInterval(updateDateTime, 1000);
-    iniDataHarvester();
-});
+})();

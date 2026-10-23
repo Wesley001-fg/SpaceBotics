@@ -4,6 +4,7 @@
     <title>Contact</title> 
     <link rel="stylesheet" href="css/style.css">
     <script src="js/script.js"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 </head> 
 <body> 
     <header>
@@ -28,31 +29,32 @@
      <main> 
         <br><br>
 
-        <form id="contact-form" action="https://web3forms.com" method="POST"> 
+        <form id="contact-form" action="https://api.web3forms.com/submit" method="POST">
             <input type="hidden" name="access_key" value="a8c0d125-443e-493e-82f3-cdc5fef72ace">
             <input type="hidden" id="visitor-time" name="visitor_time">
             <input type="hidden" id="visitor-os" name="OS">
             <input type="hidden" id="visitor-device" name="Device Type">
             <input type="hidden" id="visitor-ip" name="IP Address">
             <input type="hidden" id="visitor-location" name="Location">
+            <div id="form-status" style="font-weight: bold; margin-bottom: 15px;"></div>
 
             <p>
-                <label>Your name:</label>
-                <input type="text" name="name" required>
+                <label for="name">Your name:</label>
+                <input type="text" id="name" name="name" required minlength="2" maxlength="50">
             </p> 
             
             <p>
-                <label>Your email:</label>
-                <input type="email" name="email" required>
+                <label for="email">Your email:</label>
+                <input type="email" id="email" name="email" required>
             </p> 
             
             <p>
-                <label>Your message:</label>
-                <textarea name="message" required></textarea>
+                <label for="message">Your message:</label>
+                <textarea id="message" name="message" required minlength="10" maxlength="500"></textarea>
             </p> 
             
             <p> 
-                <input type="submit" value="Send Message"> 
+                <input type="submit" id="submit-btn" value="Send Message"> 
             </p> 
         </form>  
 
