@@ -205,3 +205,106 @@ form input[type="submit"] {
     background-color: white;
     color: black;
 }
+
+/******* lightbox from W3schools*****/
+/* Modal wrapper properties (dark fluid screen mask) */
+.modal {
+  display: none;
+  position: fixed;
+  padding-top: 60px;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.9);
+}
+
+/* Modal item boundaries layout container */
+.modal-content {
+  position: relative;
+  margin: auto;
+  max-width: 800px;
+}
+
+/* Modal window styling configuration rules */
+.close {
+  color: #fff;
+  position: absolute;
+  top: 15px;
+  right: 35px;
+  font-size: 40px;
+  font-weight: bold;
+  transition: 0.3s;
+  z-index: 1010;
+}
+
+/* Interactive cursor hover styling logic for modal drop indicators */
+.close:hover,
+.close:focus {
+  color: #bbb;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+/* Keep images hidden until toggled inside viewport layer */
+.mySlides {
+  display: none;
+}
+
+/* Direction navigation layout setups */
+.prev,
+.next {
+  cursor: pointer;
+  position: absolute;
+  top: 50%;
+  width: auto;
+  padding: 16px;
+  margin-top: -50px;
+  color: white;
+  font-weight: bold;
+  font-size: 24px;
+  transition: 0.6s ease;
+  border-radius: 0 3px 3px 0;
+  user-select: none;
+  -webkit-user-select: none;
+}
+
+/* Set alignment offsets for active click arrays */
+.next {
+  right: 0;
+  border-radius: 3px 0 0 3px;
+}
+
+.prev:hover,
+.next:hover {
+  background-color: black;
+}
+
+/* Slide sequence index indicators alignment configurations */
+.numbertext {
+  color: white;
+  font-size: 14px;
+  padding: 8px 12px;
+  position: absolute;
+  top: 0;
+  background-color: black;
+}
+
+/* Target textual metadata caption layout box designs */
+.caption-container {
+  text-align: center;
+  background-color: black;
+  padding: 10px 16px;
+  color: white;
+  margin-top: -4px;
+}
+
+/* Core transition shadows logic configs for dashboard media objects */
+img.hover-shadow {
+  transition: 0.3s;
+  cursor: pointer;
+}
+
+.hover-shadow:hover {
+  box-shadow: grey;
+  opacity: 0.8;
+}

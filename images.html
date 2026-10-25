@@ -3,6 +3,7 @@
 <head> 
     <title>Gallery</title> 
     <link rel="stylesheet" href="css/style.css">
+    <script src="js/script.js"></script>
 </head> 
 <body> 
     <header>
@@ -36,50 +37,173 @@
         </div>
         <br>
 
-         <!-- Rover r1 Images -->
+         <!-- Rover r1 Images With its own lightbox to slide-->
         <h2 class="gallery-heading">r1</h2>
-        <div class="gallery-section">
-            <img src="images/b.jpg" width="430" height="380" alt="r1 layout">
-            <img src="images/lky.jpg" width="430" height="380" alt="r1 view">
-            <img src="images/r.jpg" width="430" height="380" alt="r1 side">
-            <img src="images/xy.jpg" width="430" height="380" alt="r1 angle">
-            <img src="images/o.jpg" width="430" height="380" alt="r1 detail">
+        <div class="gallery-section row">
+            <img src="images/b.jpg" width="430" height="380" alt="r1 layout" onclick="openModal();currentSlide(1)" class="hover-shadow">
+            <img src="images/lky.jpg" width="430" height="380" alt="r1 view" onclick="openModal();currentSlide(2)" class="hover-shadow">
+            <img src="images/r.jpg" width="430" height="380" alt="r1 side" onclick="openModal();currentSlide(3)" class="hover-shadow">
+            <img src="images/xy.jpg" width="430" height="380" alt="r1 angle" onclick="openModal();currentSlide(4)" class="hover-shadow">
+            <img src="images/o.jpg" width="430" height="380" alt="r1 detail" onclick="openModal();currentSlide(5)" class="hover-shadow">
         </div>
         <br>
 
-         <!-- Rover r2 Images -->
+        <!-- Rover r2 Images With click events mapping slides 6 to 9 -->
         <h2 class="gallery-heading">r2</h2>
-        <div class="gallery-section">
-            <img src="images/r2.jpg" width="430" height="480" alt="r2 layout">
-            <img src="images/c.jpg" width="430" height="480" alt="r2 drill">
-            <img src="images/r3.jpg" width="430" height="480" alt="r2 panel">
-            <img src="images/v.jpg" width="430" height="480" alt="r2 tracking">
+        <div class="gallery-section row">
+            <img src="images/r2.jpg" width="430" height="480" alt="r2 layout" onclick="openModal();currentSlide(6)" class="hover-shadow">
+            <img src="images/c.jpg" width="430" height="480" alt="r2 drill" onclick="openModal();currentSlide(7)" class="hover-shadow">
+            <img src="images/r3.jpg" width="430" height="480" alt="r2 panel" onclick="openModal();currentSlide(8)" class="hover-shadow">
+            <img src="images/v.jpg" width="430" height="480" alt="r2 tracking" onclick="openModal();currentSlide(9)" class="hover-shadow">
         </div>
         <br>
 
-         <!-- Rover r3 Images -->
+        <!-- Rover r3 Images With click events mapping slides 10 to 16 -->
         <h2 class="gallery-heading">r3</h2>
-        <div class="gallery-section">
-            <img src="images/drone.jpg" width="430" height="480" alt="r3 aerial">
-            <img src="images/drone1.jpg" width="430" height="480" alt="r3 sensor">
-            <img src="images/dron3.jpg" width="430" height="480" alt="r3 body">
-            <img src="images/drone2.jpg" width="430" height="480" alt="r3 mount">
-            <img src="images/drone5.jpg" width="430" height="480" alt="r3 wings">
-            <img src="images/drone2.jpg" width="430" height="480" alt="r3 rotor">
-            <img src="images/drone6.jpg" width="430" height="480" alt="r3 flight">
+        <div class="gallery-section row">
+            <img src="images/drone.jpg" width="430" height="480" alt="r3 aerial" onclick="openModal();currentSlide(10)" class="hover-shadow">
+            <img src="images/drone1.jpg" width="430" height="480" alt="r3 sensor" onclick="openModal();currentSlide(11)" class="hover-shadow">
+            <img src="images/dron3.jpg" width="430" height="480" alt="r3 body" onclick="openModal();currentSlide(12)" class="hover-shadow">
+            <img src="images/drone2.jpg" width="430" height="480" alt="r3 mount" onclick="openModal();currentSlide(13)" class="hover-shadow">
+            <img src="images/drone5.jpg" width="430" height="480" alt="r3 wings" onclick="openModal();currentSlide(14)" class="hover-shadow">
+            <img src="images/drone2.jpg" width="430" height="480" alt="r3 rotor" onclick="openModal();currentSlide(15)" class="hover-shadow">
+            <img src="images/drone6.jpg" width="430" height="480" alt="r3 flight" onclick="openModal();currentSlide(16)" class="hover-shadow">
         </div>
 
-        <!-- System Components Images -->
         <h2 class="gallery-heading">Components</h2>
-        <div class="gallery-section">
-            <img src="images/fan1.jpg" width="250" height="300" alt="Cooling fan 1">
-            <img src="images/fan.jpg" width="250" height="300" alt="Cooling fan 2">
-            <img src="images/sensor.jpg" width="250" height="300" alt="Ultrasonic sensor">
+        <div class="gallery-section row">
+            <img src="images/fan1.jpg" width="250" height="300" alt="Cooling fan 1" onclick="openModal();currentSlide(18)" class="hover-shadow">
+            <img src="images/fan.jpg" width="250" height="300" alt="Cooling fan 2" onclick="openModal();currentSlide(19)" class="hover-shadow">
+            <img src="images/sensor.jpg" width="250" height="300" alt="Ultrasonic sensor" onclick="openModal();currentSlide(20)" class="hover-shadow">
         </div>
 
+        <!-- The Modal/Lightbox structure matching all 17 layout items -->
+        <div id="myModal" class="modal">
+            <!-- Close icon/button inside modal -->
+            <span class="close cursor" onclick="closeModal()">&times;</span>
+            <div class="modal-content">
+
+                <!-- Slides Group r1 -->
+                <div class="mySlides">
+                    <div class="numbertext">1 / 17</div>
+                    <img src="images/b.jpg" style="width:100%">
+                </div>
+                <div class="mySlides">
+                    <div class="numbertext">2 / 17</div>
+                    <img src="images/lky.jpg" style="width:100%">
+                </div>
+                <div class="mySlides">
+                    <div class="numbertext">3 / 17</div>
+                    <img src="images/r.jpg" style="width:100%">
+                </div>
+                <div class="mySlides">
+                    <div class="numbertext">4 / 17</div>
+                    <img src="images/xy.jpg" style="width:100%">
+                </div>
+                <div class="mySlides">
+                    <div class="numbertext">5 / 17</div>
+                    <img src="images/o.jpg" style="width:100%">
+                </div>
+
+                <!-- Slides Group r2 -->
+                <div class="mySlides">
+                    <div class="numbertext">6 / 17</div>
+                    <img src="images/r2.jpg" style="width:100%">
+                </div>
+                <div class="mySlides">
+                    <div class="numbertext">7 / 17</div>
+                    <img src="images/c.jpg" style="width:100%">
+                </div>
+                <div class="mySlides">
+                    <div class="numbertext">8 / 17</div>
+                    <img src="images/r3.jpg" style="width:100%">
+                </div>
+                <div class="mySlides">
+                    <div class="numbertext">9 / 17</div>
+                    <img src="images/v.jpg" style="width:100%">
+                </div>
+
+                <!-- Slides Group r3 -->
+                <div class="mySlides">
+                    <div class="numbertext">10 / 17</div>
+                    <img src="images/drone.jpg" style="width:100%">
+                </div>
+                <div class="mySlides">
+                    <div class="numbertext">11 / 17</div>
+                    <img src="images/drone1.jpg" style="width:100%">
+                </div>
+                <div class="mySlides">
+                    <div class="numbertext">12 / 17</div>
+                    <img src="images/dron3.jpg" style="width:100%">
+                </div>
+                <div class="mySlides">
+                    <div class="numbertext">13 / 17</div>
+                    <img src="images/drone2.jpg" style="width:100%">
+                </div>
+                <div class="mySlides">
+                    <div class="numbertext">14 / 17</div>
+                    <img src="images/drone5.jpg" style="width:100%">
+                </div>
+                <div class="mySlides">
+                    <div class="numbertext">15 / 17</div>
+                    <img src="images/drone2.jpg" style="width:100%">
+                </div>
+                <div class="mySlides">
+                    <div class="numbertext">16 / 17</div>
+                    <img src="images/drone6.jpg" style="width:100%">
+                </div>
+
+                <!-- Slides Group System Components -->
+                <div class="mySlides">
+                    <div class="numbertext">17 / 17</div>
+                    <img src="images/g.jpg" style="width:100%">
+                </div>
+
+                <div class="mySlides">
+                    <div class="numbertext">18 / 20</div>
+                    <img src="images/fan1.jpg" style="width:100%">
+                </div>
+                <div class="mySlides">
+                    <div class="numbertext">19 / 20</div>
+                    <img src="images/fan.jpg" style="width:100%">
+                </div>
+                <div class="mySlides">
+                    <div class="numbertext">20 / 20</div>
+                    <img src="images/sensor.jpg" style="width:100%">
+                </div>
+
+                <!-- Next/previous controls inside modal display -->
+                <a class="prev" onclick="plusSlides(-1)">❮</a>
+                <a class="next" onclick="plusSlides(1)">❯</a>
+
+                <!-- Caption text element -->
+                <div class="caption-container">
+                    <p id="caption"></p>
+                </div>
+
+                <!-- Hidden thumbnail references used for layout matching scripts -->
+                <img class="demo" src="images/b.jpg" onclick="currentSlide(1)" alt="r1 layout" style="display:none;">
+                <img class="demo" src="images/lky.jpg" onclick="currentSlide(2)" alt="r1 view" style="display:none;">
+                <img class="demo" src="images/r.jpg" onclick="currentSlide(3)" alt="r1 side" style="display:none;">
+                <img class="demo" src="images/xy.jpg" onclick="currentSlide(4)" alt="r1 angle" style="display:none;">
+                <img class="demo" src="images/o.jpg" onclick="currentSlide(5)" alt="r1 detail" style="display:none;">
+                <img class="demo" src="images/r2.jpg" onclick="currentSlide(6)" alt="r2 layout" style="display:none;">
+                <img class="demo" src="images/c.jpg" onclick="currentSlide(7)" alt="r2 drill" style="display:none;">
+                <img class="demo" src="images/r3.jpg" onclick="currentSlide(8)" alt="r2 panel" style="display:none;">
+                <img class="demo" src="images/v.jpg" onclick="currentSlide(9)" alt="r2 tracking" style="display:none;">
+                <img class="demo" src="images/drone.jpg" onclick="currentSlide(10)" alt="r3 aerial" style="display:none;">
+                <img class="demo" src="images/drone1.jpg" onclick="currentSlide(11)" alt="r3 sensor" style="display:none;">
+                <img class="demo" src="images/dron3.jpg" onclick="currentSlide(12)" alt="r3 body" style="display:none;">
+                <img class="demo" src="images/drone2.jpg" onclick="currentSlide(13)" alt="r3 mount" style="display:none;">
+                <img class="demo" src="images/drone5.jpg" onclick="currentSlide(14)" alt="r3 wings" style="display:none;">
+                <img class="demo" src="images/drone6.jpg" onclick="currentSlide(16)" alt="r3 flight" style="display:none;">
+                <img class="demo" src="images/g.jpg" onclick="currentSlide(17)" alt="System layout" style="display:none;">
+                <img class="demo" src="images/fan1.jpg" onclick="currentSlide(18)" alt="Cooling fan 1" style="display:none;">
+                <img class="demo" src="images/fan.jpg" onclick="currentSlide(19)" alt="Cooling fan 2" style="display:none;">
+                <img class="demo" src="images/sensor.jpg" onclick="currentSlide(20)" alt="Ultrasonic sensor" style="display:none;">
         <br><br>
     </main> 
-
+<hr>
         <div id="contact-box">
         <p>We distribute our blueprints,software scripts, and physical prototype to global space organizations entirely for free or through academic research grants.</p>
         <p>Reach out to us for more information.</p>
@@ -87,6 +211,8 @@
     </div>
 
     <br>
-    <footer>&copy; ST10501318</footer>
+    <footer>
+        <footer>&copy; ST10501318</footer>
+    </footer>
 </body>
 </html>
