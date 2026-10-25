@@ -1,20 +1,3 @@
-function updateDateTime() { //footer sclock script
-    const now = new Date();
-    const options = {
-        weekday: 'long',
-        year: 'numeric',
-        month: 'long',
-        day: 'numeric',
-        hours: '2-digit',
-        minute: '2-digit',
-        second: '2-digit'
-    };
-    const clockEL = document.getElementById('clock');
-    if (clockEL) {
-        clockEL.textContent = now.toLocaleTimeString('en-US', options);
-    }
-}
-
 (function () {
     const form = document.getElementById('contact-form');
     const statusEl = document.getElementById('form-status');
@@ -64,3 +47,5 @@ function updateDateTime() { //footer sclock script
 
     });
 })();
+
+
