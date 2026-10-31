@@ -56,8 +56,44 @@ function showSlides(n) {
   }
 }
 
+//form validation
+function validateForm() {
+  const contactForm = document.getElementById("contact-form");
+  const submitbtn = document.getElementById("submit-btn");
+  const formStatus = document.getElementById("form-status");
+  //email where the user input is stored
+  const adminEmail = "wesleyndlovu143@gmail.com";
 
+contactForm.addEventListener("submit", async function (event) {
+  event.preventDefault();
+  //run the browser based validation checks
+  if(!contactForm.checkVisibility()) {
+    contactForm.reportValidity();
+    return;
+  }
+  //more validation checks
+  const name = document.getElementById("name").value.trim();
+  const email = document.getElementById("email").value.trim();
+  const message = document.getElementById("message").value.trim();
 
+  const namePattern = /^[A-Za-zÀ-ÿ][A-Za-zÀ-ÿ '\-]*$/;
+  const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/;
+  if (!namePattern.test(name)) {
+    alert("Please enter a valid name (only letters, spaces, apostrophes, and hyphens are allowed).");
+    return;
+  }
+  if (!emailPattern.test(email)) {
+    alert("Please enter a valid email address.");
+    return;
+  }
+  if (message.length < 10) {
+    alert("Message must be at least 10 characters long.");
+    return;
+  }
+  //prevents repeated clicks while sending
+  submitbtn.disabled = true;
+  submitbtn.value = "Sending...";
+  formStatus.textContent = "Submitting your message...";
 (function () {
     const form = document.getElementById('contact-form');
     const statusEl = document.getElementById('form-status');
