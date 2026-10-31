@@ -57,7 +57,6 @@ function showSlides(n) {
 }
 
 //form validation
-function validateForm() {
   const contactForm = document.getElementById("contact-form");
   const submitbtn = document.getElementById("submit-btn");
   const formStatus = document.getElementById("form-status");
@@ -94,7 +93,40 @@ contactForm.addEventListener("submit", async function (event) {
   submitbtn.disabled = true;
   submitbtn.value = "Sending...";
   formStatus.textContent = "Submitting your message...";
+
+  try {
+    //send form data yo formsubmits AJAX endpoint
+    const response = await fetch("https://formsubmit.co/ajax/" + adminEmail, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        "Accept": "application/json"
+      },
+      body: JSON.stringify({
+        name: name,
+        email: email,
+        message: message
+      })
+    }
+    );
+  const result = await response.json();
+  //check if the submission was successful
+  if (response.ok && (result.success || result.success === "true") ) {
+    alert("Your information has been sent successfully");
+    formStatus.textContent = "Your information has been sent successfully.";
+    contactForm.reset();
+  } else {
+    throw new Error(result.message || "Form submission failed.");
+  }
+  } catch (error) {
+    console.error("Error submitting form:", error);
+    formsStatus.textContent = "There was an error submitting your message. Please try again later.";
+  } alert("Message could not be confirmed, try again");
+}finally {
+  submitbtn.disabled = false;
+  submitbtn.value = "Submit";
 }
+
 
 /**********************dateandtime script**********************/
 function updateDateTime() {
