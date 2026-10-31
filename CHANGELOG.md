@@ -1,9 +1,13 @@
 # Change log
+#Part 2 Improvement
 
 All changes and improvements on on **Space Botics** will be documented on this file 
 
 ## - 2026/09/16
 ### Added
+-From the feedback I got from my kecture I am expected to link my external css file with my html or web pages using this tag on all my web pages
+<link rel="stylesheet" type="text/css" href="style.css">
+-For the final POE, I am required to now add HTML FORM so that I can be able to do form validation using javascript
 -Created a file that contain CSS code for external styling applied
 -Implemented a  clean, modern `Arial, sans-serif` font family across the entire website
 -A `<nav>` tag was written that contains all the hyperlinks and works as the id names 
