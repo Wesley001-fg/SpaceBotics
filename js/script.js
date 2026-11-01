@@ -74,124 +74,118 @@ function showSlides(n) {
 }
 
 //form validation
-  const contactForm = document.getElementById("contact-form");
-  const submitbtn = document.getElementById("submit-btn");
-  const formStatus = document.getElementById("form-status");
-  //email where the user input is stored
-  const adminEmail = "wesleyndlovu143@gmail.com";
+(function() {
+  const form = document.getElementById('contactForm');
+  const status = document.getElementById('status');
+  const btn = document.getElementById('submitBtn');
 
-contactForm.addEventListener("submit", async function (event) {
-  event.preventDefault();
-  //run the browser based validation checks
-  if(!contactForm.checkVisibility()) {
-    contactForm.reportValidity();
-    return;
-  }
-  //more validation checks
-  const name = document.getElementById("name").value.trim();
-  const email = document.getElementById("email").value.trim();
-  const message = document.getElementById("message").value.trim();
+  //stops the script if form is not found
+  if(!form || !statusE1 || !btn) return;
 
-  const namePattern = /^[A-Za-zÀ-ÿ][A-Za-zÀ-ÿ '\-]*$/;
-  const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/;
-  if (!namePattern.test(name)) {
-    alert("Please enter a valid name (only letters, spaces, apostrophes, and hyphens are allowed).");
-    return;
+  //records users submission dateAndTime
+  function updateVisitorTime() {
+    document.getElementById('visitorTime').value = new Date().toString();
   }
-  if (!emailPattern.test(email)) {
-    alert("Please enter a valid email address.");
-    return;
-  }
-  if (message.length < 10) {
-    alert("Message must be at least 10 characters long.");
-    return;
-  }
-  //prevents repeated clicks while sending
-  submitbtn.disabled = true;
-  submitbtn.value = "Sending...";
-  formStatus.textContent = "Submitting your message...";
 
-  try {
-    //send form data yo formsubmits AJAX endpoint
-    const response = await fetch("https://formsubmit.co/ajax/" + adminEmail, {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-        "Accept": "application/json"
-      },
-      body: JSON.stringify({
-        name: name,
-        email: email,
-        message: message
-      })
+  updateVisitorTime();
+
+  //checks if email vaild
+  const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+  //displays error message if email is not valid
+  function setError(id, msg) {
+    const eerEl = document.getElementById(id+ '-error');
+    if(eerEl) {
+      eerEl.textContent = msg;
     }
-    );
-  const result = await response.json();
-    //check if the submission was successful
-    if (response.ok && (result.success || result.success === "true") ) {
-      alert("Your information has been sent successfully");
-      formStatus.textContent = "Your information has been sent successfully.";
-      contactForm.reset();
-    } else {
-      throw new Error(result.message || "Form submission failed.");
-    }
-  } catch (error) {
-    console.error("Error submitting form:", error);
-    formStatus.textContent = "There was an error submitting your message. Please try again later.";
-    alert("Message could not be confirmed, try again");
-  } finally {
-    submitbtn.disabled = false;
-    submitbtn.value = "Submit";
   }
-});
 
-(function () {
-    const form = document.getElementById('contact-form');
-    const statusEl = document.getElementById('form-status');
-    const btn = document.getElementById('submit-btn');
+  //validates users infor
+  function validate() {
+    let ok = true;
+    const name = document.getElementById('name').value.trim();
+    const email = document.getElementById('email').value.trim();
+    const message = document.getElementById('message').value.trim();
 
-    /* ---------- Fill hidden visitor info ---------- */
-    document.getElementById('visitor-time').value = new Date().toString();
+    //clear previous error messages
+    setError('name', '');
+    setError('email', '');
+    setError('message', '');
 
-    /* ---------- Validation ---------- */
-    const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/;
-
-    function setError(id, msg) {
-        const errEl = document.getElementById(id + '-error');
-        if (errEl) errEl.textContent = msg;
+    //checls users name
+    if(name.length < 2) {
+      setError('name', 'Name must be at least 2 characters long.');
+      ok = false;
+    }
+    else if(!/^[a-zA-Z\s]+$/.test(name)) {
+      setError('name contains invalid characters.');
+      ok = false;
     }
 
-    function validate() {
-        let ok = true;
-        const name = form.name.value.trim();
-        const email = form.email.value.trim();
-        const message = form.message.value.trim();
-        
-
-        setError('name', ''); setError('email', ''); setError('message', '');
-
-        if (name.length < 2) { setError('name', 'Please enter your name (at least 2 characters).'); ok = false; }
-        else if (!/^[\p{L}\s'.-]+$/u.test(name)) { setError('name', 'Name contains invalid characters.'); ok = false; }
-
-        if (!email) { setError('email', 'Please enter your email address.'); ok = false; }
-        else if (!emailPattern.test(email)) { setError('email', 'Please enter a valid email address.'); ok = false; }
-
-        if (message.length < 10) { setError('message', 'Message must be at least 10 characters.'); ok = false; }
-
-        return ok;
+    //checks users email
+    if(!email) {
+      setError('email', 'Email is required.');
+      ok = false;
+    }
+    else if(!emailPattern.test(email)) {
+      setError('email', 'Please enter a valid email address.');
+      ok = false;
     }
 
-    /* ---------- Submit to Web3Forms ---------- */
-    form.addEventListener('submit', async function (e) {
-        e.preventDefault();
-        statusEl.textContent = '';
-        statusEl.style.color = '';
+    //checks users message
+    if(message.length < 10) {
+      setError('message', 'Message must be at least 10 characters long.');
+      ok = false;
+    }
+    return ok;
+  }
 
-        if (!validate()) return;
+  /--------------- web3forms submission ----------------/
+  //validates form and submits if valid
+  form.addEventListener('submit', async function (e) {
+    e.preventDefault();
+    status.textContent = '';
 
-        btn.disabled = true;
-        btn.value = 'Sending...';
+    //stops submission if form is not valid
+    if(!validate()) return;
 
-    });
-})();
+    //prevents repeated submissions
+    btn.disabled = true;
+    btn.value = 'Sending...';
+    status.textContent = 'Sending...';
 
+    try {
+            // Collects all form fields, including hidden information.
+            updateVisitorTime();
+            const formData = new FormData(form);
+
+            // Sends the information to the Web3Forms endpoint.
+            const response = await fetch(form.action, {
+                method: 'POST',
+                body: formData
+            });
+
+            const result = await response.json();
+            //checks if web3forms submission was successful
+            if(response.ok && result.success) {
+              alert('Form submitted successfully');
+              statusEl.textContent = 'Form submitted successfully';
+
+              //clear form fields after successful submission
+              form.reset();
+              updateVisitorTime();
+            } else {
+              throw new Error(result.message || 'Form submission failed');
+            } 
+          } catch (error) {
+            //displays error message if submission fails
+            console.error('Error submitting form:', error);
+            statusEl.textContent = 'Error submitting form: ' + error.message;
+            alert('Error submitting form: ' + error.message);
+          } finally {
+            //restore submit button state
+            btn.disabled = false;
+            btn.value = 'Submit';
+          }
+        });
+      })();
