@@ -1,6 +1,12 @@
 h1{
     color: white;
 }
+
+h1 a {
+    color: white;
+    text-decoration: none;
+}
+
 body {
     background-color: black;
 }
@@ -19,6 +25,7 @@ nav a, nav details {
     display: inline-block;
     vertical-align: middle;
     margin: 0 10px;
+    text-decoration: none;
 }
 
 .intro {
