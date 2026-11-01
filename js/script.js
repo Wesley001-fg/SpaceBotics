@@ -110,23 +110,23 @@ contactForm.addEventListener("submit", async function (event) {
     }
     );
   const result = await response.json();
-  //check if the submission was successful
-  if (response.ok && (result.success || result.success === "true") ) {
-    alert("Your information has been sent successfully");
-    formStatus.textContent = "Your information has been sent successfully.";
-    contactForm.reset();
-  } else {
-    throw new Error(result.message || "Form submission failed.");
-  }
+    //check if the submission was successful
+    if (response.ok && (result.success || result.success === "true") ) {
+      alert("Your information has been sent successfully");
+      formStatus.textContent = "Your information has been sent successfully.";
+      contactForm.reset();
+    } else {
+      throw new Error(result.message || "Form submission failed.");
+    }
   } catch (error) {
     console.error("Error submitting form:", error);
-    formsStatus.textContent = "There was an error submitting your message. Please try again later.";
-  } alert("Message could not be confirmed, try again");
-}finally {
-  submitbtn.disabled = false;
-  submitbtn.value = "Submit";
-}
-
+    formStatus.textContent = "There was an error submitting your message. Please try again later.";
+    alert("Message could not be confirmed, try again");
+  } finally {
+    submitbtn.disabled = false;
+    submitbtn.value = "Submit";
+  }
+});
 
 /**********************dateandtime script**********************/
 function updateDateTime() {
