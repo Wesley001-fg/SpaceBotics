@@ -189,3 +189,43 @@ function showSlides(n) {
           }
         });
       })();
+
+/********************** Merch Page Search Script **********************/
+document.addEventListener("DOMContentLoaded", function () {
+    const searchInput = document.getElementById("productSearch");
+    const productCards = document.querySelectorAll(".product-column");
+    const noResultsMessage = document.getElementById("noResults");
+
+    // Only activate logic if search box exists on the current rendered viewport page
+    if (searchInput) {
+        searchInput.addEventListener("input", function () {
+            const queryText = searchInput.value.toLowerCase().trim();
+            let matchingCardsFound = 0;
+
+            productCards.forEach(function (card) {
+                const titleElement = card.querySelector(".product-title");
+                const imgElement = card.querySelector("img");
+
+                // Safely grab texts if tags are defined inside product boxes
+                const titleText = titleElement ? titleElement.textContent.toLowerCase() : "";
+                const altText = imgElement ? imgElement.getAttribute("alt").toLowerCase() : "";
+
+                if (titleText.includes(queryText) || altText.includes(queryText)) {
+                    card.style.display = "block"; 
+                    matchingCardsFound++;
+                } else {
+                    card.style.display = "none";  
+                }
+            });
+
+            // Toggle error text display alert if item counters hit 0
+            if (noResultsMessage) {
+                if (matchingCardsFound === 0) {
+                    noResultsMessage.style.display = "block";
+                } else {
+                    noResultsMessage.style.display = "none";
+                }
+            }
+        });
+    }
+});

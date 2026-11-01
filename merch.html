@@ -21,35 +21,30 @@
     </head> 
 
     <body>
-        <header>
-        <div id="h1">
-        <h1><a href="index.html">Spacebotics</a></h1>
-        </div>
-        
-            <br>
-            <nav>
-                <details>
-                    <summary>Vehicles</summary>
-                    <a href="r1.html">r1</a>
-                    <a href="r2.html">r2</a>
-                    <a href="r3.html">r3</a>
-                </details>
-             
-                <a href="index.html">Home</a> 
-                <a href="images.html">Multimedia</a> 
-                <a href="merch.html">Merch</a> 
-                <a href="contact us.html">Get in touch</a> 
-                <a href="about us.html">About us</a>
-            </nav>
+        <header class="topnav">
+            <div class="search-container">
+                <input type="text" id="productSearch" placeholder="Search">
+            </div>
+
+            <div class="logo-container">
+                <h1><a href="index.html">SPACEBOTICS</a></h1>
+            </div>
+
+            <div class="icons-container">
+                <span title="Search Icon"></span>
+                <span title="Shopping Bag"></span>
+            </div>
         </header> 
-        <main> 
 
              <main> 
             <br><br>
             <h1>PRODUCTS</h1>
 
+            <!-- Message box displayed when item filters don't find content match -->
+            <div id="noResults" class="no-results-msg">No products match your search.</div>
+
             <!-- Container replacing the table -->
-            <div class="products-container">
+            <div class="products-container" id="productsGrid">
                 
                 <!-- Product 1 Box -->
                 <div class="product-column">
@@ -153,8 +148,11 @@
     </div>
 
     <br>
-    <p>&copy; ST10501318</p>
-    <p id="datetime"></p>
+    <!-- Shared Footer layout -->
+    <footer>
+        <p>&copy; ST10501318</p>
+        <p id="datetime"></p>
+    </footer>
 
     <!-- Cloudflare Web Analytics -->
      <script type='module' src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "37787b4199404d0d9013ad4e859a4c81"}'></script>

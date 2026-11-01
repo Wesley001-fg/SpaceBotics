@@ -7,6 +7,12 @@ h1 a {
     text-decoration: none;
 }
 
+h2 a{
+    color: black;
+    text-align: center;
+    text-decoration: none;
+}
+
 body {
     background-color: black;
 }
@@ -315,3 +321,57 @@ img.hover-shadow {
   box-shadow: grey;
   opacity: 0.8;
 }
+
+/**************Merch Page Styles**************/
+/* Left Side: Search Bar Box */
+.search-container {
+align-items: right;
+}                
+            
+.topnav input[type=text] {
+    padding: 8px 12px;
+    border: 1px solid grey;
+    border-radius: 4px;
+    font-size: 15px;
+    width: 220px;
+    background-color: white;
+}
+
+/* Middle: Brand Logo Title */
+.logo-container {
+    text-align: center;
+}
+.logo-container h1 a {
+    color:black;
+    text-decoration: none;
+    text-align: center;
+}
+           
+/* --- Products Layout Styles --- */
+.product-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 25px;
+    padding: 20px;
+}
+
+.product-column {
+    border: 1px solid #eee;
+    padding: 15px;
+    border-radius: 6px;
+    width: 200px;
+    background-color: #fafafa;
+    transition: transform 0.2s;
+}
+            
+.product-column p {
+    margin: 8px 0;
+}
+  
+.no-results-msg {
+    font-size: 18px;
+    color: grey;
+    padding: 20px;
+    display: none;
+}
+            

@@ -4,3 +4,4 @@ Last Updated :
 11 Nov, 2025)
 https://www.tutorialspoint.com/article/javascript-program-to-retrieve-clients-ip-address accessed 2026.10.23
 https://www.cloudflare.com/en-au/web-analytics/ accessed 2026.11.01
+https://www.w3schools.com/howto/howto_css_searchbar.asp accessed 2026.11.01
