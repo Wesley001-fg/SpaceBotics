@@ -27,3 +27,10 @@ All changes and improvements on on **Space Botics** will be documented on this f
 
 ### Removed
 -table tag and replaced with a box tag in html
+
+## References
+Cloudflare, 2026. *Free website analytics*. Available at: <https://www.cloudflare.com/en-au/web-analytics/> [Accessed 1 November 2026].
+GeeksforGeeks, 2025. *How to Host a Website on GitHub For Free*. Available at: <https://www.geeksforgeeks.org/git/how-to-host-a-website-on-github-for-free/> [Accessed 18 October 2026].
+Tutorialspoint, 2026. *JavaScript program to retrieve clients IP address*. Available at: <https://www.tutorialspoint.com/article/javascript-program-to-retrieve-clients-ip-address> [Accessed 23 October 2026].
+W3Schools, 2026. *How TO - Search Bar*. Available at: <https://www.w3schools.com/howto/howto_css_searchbar.asp> [Accessed 1 November 2026].
+Web3Forms, 2026. *Web3Forms Onboarding Setup Portal*. Available at: <https://app.web3forms.com/onboarding/setup> [Accessed 18 October 2026].
