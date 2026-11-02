@@ -1,5 +1,4 @@
 # Change log
-#Part 2 Improvement
 
 All changes and improvements on on **Space Botics** will be documented on this file 
 
@@ -8,12 +7,17 @@ All changes and improvements on on **Space Botics** will be documented on this f
 <link rel="stylesheet" type="text/css" href="style.css">
 -Added a function that shows the current date and time on the footer
 -Added a script that validates and sends user input to a email on the 'contact us' page
+-Added a search bar function to allow user to manually type in their desired product they looking for on the merch page
+-Made the images page interactive where user can click to room in and click a arrow to see more images
 -For the final POE, I am required to now add HTML FORM so that I can be able to do form validation using javascript
 -Created a file that contain CSS code for external styling applied
 -Implemented a  clean, modern `Arial, sans-serif` font family across the entire website
 -A `<nav>` tag was written that contains all the hyperlinks and works as the id names 
 -New file: `CHANGELOG.md` in folder
 -Contact & Footer IDs are shared across mutiple pages to reuse same code
+-Client-Side Form Validation:** Implemented an asynchronous JavaScript form validator for the 'Get in touch' (`contact us.html`) page to verify user input constraints before processing submissions.
+-Configured an asynchronous `fetch()` transaction loop to seamlessly deliver verified user contact inquiries directly to the organization's backend email.
+-Engineered a modal image gallery lightbox viewport interface on the Multimedia page (`images.html`) with forward/backward arrow controls and metadata caption tags.
 
 ### Changed
 -Reomved the table for html and replaced with the box tag for precise structural alignment
